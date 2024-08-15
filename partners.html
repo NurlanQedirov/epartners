@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>e-partners</title>
+    <link rel="icon" type="image/png" href="./photo/logo.jpg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0 5%;
+        background-color: #ffffff;
+        color: #333;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 20px;
+        background: #7393b3;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      }
+
+      header .address {
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+        font-size: 12px;
+      }
+
+      header .contact-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        margin-left: 605px;
+      }
+
+      header .social-icons {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        font-size: 12px;
+      }
+
+      header .social-icons a {
+        color: #fff;
+        margin-right: 20px;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      header .social-icons a:last-child {
+        margin-right: 0;
+      }
+
+      header .social-icons a:hover {
+        color: #ccc;
+      }
+
+      header i {
+        color: #fff;
+        font-size: 13px;
+        margin-right: 3px;
+      }
+
+      .vertical-line {
+        border-left: 1px solid #ccc;
+        height: 13px;
+        margin: 0 10px;
+        opacity: 0.5;
+      }
+
+      header .contact-info .vertical-line:nth-child(2) {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      header .contact-info .vertical-line:nth-child(4) {
+        margin-left: 20px;
+      }
+
+      .menu {
+        position: relative;
+        display: inline-block;
+      }
+
+      .submenu {
+        position: absolute;
+        top: 100%;
+        background-color: white;
+        border: 1px solid blue;
+        border-left: none;
+        padding: 10px;
+        width: 200px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .menu:hover .submenu {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .submenu a {
+        position: relative;
+        font-size: 11px;
+      }
+
+      .submenu a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #7393B3;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .submenu a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .navbar {
+        background-color: #ffffff;
+        padding: 10px;
+        text-align: left;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links a:hover {
+        color: #7393B3;
+      }
+
+      nav a {
+        color: #333;
+        text-decoration: none;
+        padding: 10px;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 20px;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #000000;
+      }
+
+      section {
+        padding: 20px;
+        text-align: center;
+      }
+
+      #HomeServices {
+        width: 100%;
+        height: 258px;
+        background-color: #7393b3;
+        padding: 1px 126px;
+        gap: 40px;
+      }
+
+      #HomeServices p {
+        color: white;
+      }
+
+      p a {
+        color: white;
+        text-decoration: none;
+      }
+
+      #HomeServices .servicetitles {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        text-align: left;
+      }
+
+      #HomeServices .servicetitles h1 {
+        color: #fff;
+        text-align: left;
+        font-family: "Plus Jakarta Sans";
+        font-size: 44px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+      }
+
+      #PartnersPage {
+        background: #f1f1f1;
+      }
+
+      #PartnersPage .allpartners {
+        display: flex;
+        align-items: flex-start;
+        align-content: flex-start;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding: 90px 126px 102px 126px;
+      }
+
+      #PartnersPage .allpartners .partnercard {
+        background-color: #fff;
+        display: flex;
+        width: 120px;
+        height: 120px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        overflow: hidden;
+        padding: 10px 10px;
+        box-shadow: 3px 4px 3px 0px rgba(0, 0, 0, 0.05);
+      }
+
+      #PartnersPage .allpartners .partnercard:hover img {
+        filter: grayscale(0%);
+      }
+
+      #PartnersPage .allpartners .partnercard img {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+        filter: grayscale(100%);
+        transition: 0.4s ease-in-out;
+      }
+      .footer-container {
+        background-color: #7393b3;
+        padding: 10px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-first-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 150px;
+      }
+
+      .footer-logo {
+        width: 60px;
+        margin-right: auto;
+        margin-left: 90px;
+      }
+
+      .footer-column {
+        color: #ffffff;
+        margin-left: 80px;
+        flex: 1;
+      }
+
+      .footer-column a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        margin-right: 20px;
+      }
+
+      .footer-second-row {
+        display: flex;
+        margin: 10px;
+        height: 100px;
+      }
+      .contact {
+        margin-top: 15px;
+        margin-right: 90px;
+        color: #ffffff;
+        font-family: "Plus Jakarta Sans";
+      }
+
+      .social-icons-footer {
+        display: flex;
+        flex: 2;
+        justify-content: right;
+        margin-right: 130px;
+      }
+
+      .social-icons-footer a {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 24px;
+        transition: color 0.3s;
+      }
+
+      hr {
+        width: 100%;
+        border: none;
+        border-top: 1px solid #ffffff;
+      }
+
+      .footer-third-row {
+        color: #ffffff;
+        margin: 10px;
+        text-align: center;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="address">
+        <i class="fas fa-map-marker-alt"></i> Baku Azerbaijan
+      </div>
+      <div class="contact-info">
+        <i class="fas fa-phone"></i> +994706309830
+        <div class="vertical-line"></div>
+        <i class="fas fa-envelope"></i> info@e-partners.az
+        <div class="vertical-line"></div>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </header>
+    <nav class="navbar">
+      <div class="nav-photo">
+        <img
+          src="./photo/logo.jpg"
+          alt="Logo"
+          style="width: 50px; margin-right: 10px; float: left"
+        />
+      </div>
+      <div class="nav-links">
+        <a href="./home.html">Home</a>
+        <div class="menu">
+          <a href="#">Services</a>
+          <div class="submenu">
+            <a href="./itgovernance.html">IT Governance</a>
+            <a href="./cybersecurity.html">Cyber ​​security</a>
+            <a href="./informationsecurity.html">Information security</a>
+          </div>
+        </div>
+
+        <a href="./partners.html">Partners</a>
+        <a href="./about.html">About Us</a>
+      </div>
+    </nav>
+
+    <section id="HomeServices">
+      <div class="servicetitles">
+        <h1>Our partners</h1>
+        <p><a href="./e-partners.html">Home</a> &raquo; Our partners</p>
+      </div>
+    </section>
+    <section id="PartnersPage">
+      <div class="allpartners">
+        <div class="partnercard">
+          <a
+            href="https://www.checkpoint.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/checkpoint.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.cloudflare.com/en-gb/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/cloudflare.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.cyberark.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/cyberark.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.dnssense.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/dnssense.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a href="https://www.f5.com/" style="cursor: pointer" target="_blank"
+            ><img src="./photopartners/f5.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.forcepoint.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/forcepoint.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.ibm.com/us-en"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/ibm.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a href="https://forseca.com/" style="cursor: pointer" target="_blank"
+            ><img src="./photopartners/forseca.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.ivanti.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/ivanti.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.imperva.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/imperva.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.microfocus.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/microfocus.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.microsoft.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/microsoft.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.netscout.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/netscout.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.paloaltonetworks.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/paloalto.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.picussecurity.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/picus.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.rapid7.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/rapid7.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://brandefense.io/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/brandefense.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.riverbed.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/riverbed.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.synopsys.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/synopsys.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a href="https://sechard.com/" style="cursor: pointer" target="_blank"
+            ><img src="./photopartners/sechard.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.sentinelone.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/sentinelone.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.splunk.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/splunk.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.solarwinds.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/solarwinds.png" alt=""
+          /></a>
+        </div>
+        <div class="partnercard">
+          <a
+            href="https://www.tenable.com/"
+            style="cursor: pointer"
+            target="_blank"
+            ><img src="./photopartners/tenable.png" alt=""
+          /></a>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-first-row">
+          <img src="./photo/logo.jpg" alt="Logo" class="footer-logo" />
+          <div class="contact">
+            <h2> CONTACT</h2>
+            <br>
+            <h4>Phone: +994706309830</h4>
+            <h4>Mail: info@e-partners.az</h4>
+           </div>
+        </div>
+        <div class="footer-second-row">
+          <div class="footer-column">
+            <a href="./about.html">About</a>
+            <a href="./itgovernance.html">Services</a>
+            <a href="./partners.html">Partners</a>
+          </div>
+          <div class="social-icons-footer">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="footer-third-row">
+          <p>&copy; 2024 e-partners.All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

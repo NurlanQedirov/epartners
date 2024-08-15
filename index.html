@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Səhifəsi</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Giriş Et</h2>
+        <form id="loginForm">
+            <label for="username">İstifadəçi Adı:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Parol:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Giriş</button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+    <script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+   
+    const encodedUsername = btoa(username);
+    const encodedPassword = btoa(password);
+
+    
+    const correctEncodedUsername = 'YWRtaW4='; 
+    const correctEncodedPassword = 'MTIzNA=='; 
+
+    if (encodedUsername === correctEncodedUsername && encodedPassword === correctEncodedPassword) {
+        window.location.href = 'home.html'; 
+    } else {
+        document.getElementById('errorMessage').textContent = 'Yanlış istifadəçi adı və ya parol';
+        document.getElementById('errorMessage').style.display = 'block';
+    }
+});
+
+    </script>
+</body>
+</html>
